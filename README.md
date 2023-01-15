@@ -1,8 +1,11 @@
-```sh
-运行：npm run dev
-打包：npm run build
-安装：npm install
-```
+
+## 运行：
+npm run dev
+## 打包：
+npm run build
+## 安装：
+npm install
+
 
 # 集合
 node + express + body-parser + mysql + Vue3 + Vite
