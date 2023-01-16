@@ -13,7 +13,9 @@ export default defineConfig({
       dts: false,
       dirs: ['src/components'], // 按需加载的文件
       resolvers: [
-        AntDesignVueResolver()
+        AntDesignVueResolver({
+          resolveIcons: '@ant-design/icons-vue'
+        })
       ]
     })
   ],
@@ -22,6 +24,15 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url))
     }
   },
+  css: {
+    preprocessorOptions: {
+      // 引入全局样式
+      scss: {
+        additionalData: '@import "@/assets/style.scss"; @import "@/assets/base.scss";',
+        javascriptEnabled: true
+      }
+    }
+  }
   // server: {
   //   proxy: {
   //     "/api": {

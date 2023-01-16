@@ -1,0 +1,24 @@
+/**
+  * @mixin 混合样式， 使用@include, 例如：@include displayFlex(flex-start, space-between); 
+*/
+// flex布局
+@mixin displayFlex($align-items: center, $justify-content: center, $flex-direction: none) {
+    display: flex;
+    align-items: $align-items;
+    justify-content: $justify-content;
+    flex-direction: $flex-direction;
+}
+// 多行文本溢出
+@mixin ellipseBase($clamp: 1) {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: $clamp;
+}
+.m-t20 {
+    margin-top: 20px;
+}
+.p-r8 {
+    padding-right: 8px;
+}
