@@ -35,7 +35,7 @@
                 </a-input>
             </a-form-item>
         </div>
-        <div class="form-other">
+        <div class="form-other" @click="handleLogin">
             <div></div>
             <div>忘记密码</div>
         </div>
@@ -47,7 +47,8 @@
 
 <script setup>
 import { ref, reactive } from 'vue'
-
+import { login } from '@/api/user'
+ 
 const formState = reactive({
     username: '',
     password: '',
@@ -89,8 +90,17 @@ const rules = {
     password: [{validator: validateUserPwd, trigger: 'change'}]
 }
 
-const submitFinish = () => {
+const submitFinish = async (event) => {
     console.log('dasdadsada')
+    await login({ username: 'fsdfsd', password: 'dasdasd' }).then(res=> {
+        console.log('请求的接口结果：', res)
+    })
+}
+const handleLogin = async (event) => {
+    console.log('dasdadsada')
+    await login({ username: 'fsdfsd', password: 'dasdasd' }).then(res=> {
+        console.log('请求的接口结果：', res)
+    })
 }
 </script>
 
