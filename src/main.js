@@ -8,6 +8,7 @@ import router from './router'
 
 const app = createApp(App)
 
+
 // // 获取组件
 // const files = import.meta.globEager('@/components/*/*.vue')
 // const list = Object.keys(files)
@@ -19,6 +20,7 @@ const app = createApp(App)
 //     // 注册组件
 //     app.component(arr[arr.length - 1], component)
 // })
+
 
 
 app.use(createPinia())

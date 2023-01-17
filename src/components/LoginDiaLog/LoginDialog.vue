@@ -7,43 +7,14 @@
                 <a-tab-pane key="1" tab="验证码登录"></a-tab-pane>
                 <a-tab-pane key="2" tab="密码登录"></a-tab-pane>
             </a-tabs>
-            <!-- 短信验证码登录 -->
-            <a-form class="m-t20" ref="formRef" :model="formState" v-if="activeKey == 1">
-                <a-form-item>
-                    <a-input placeholder="手机号">
-                        <template #prefix>
-                            <span class="p-r8 form-country">中国 +86</span>
-                            <span class="p-r8 form-icon">
-                                <UpOutlined />
-                                <DownOutlined />
-                            </span>
-                        </template>
-                    </a-input>
-                </a-form-item>
-                <a-form-item class="m-t20">
-                    <a-input placeholder="输入验证码">
-                        <template #suffix>
-                            <a-button type="primary">获取短信验证码</a-button>
-                        </template>
-                    </a-input>
-                </a-form-item>
-            </a-form>
-            <!-- 密码登录 -->
-            <a-form class="m-t20" ref="formRef" :model="formState" v-else>
-                <a-form-item>
-                    <a-input placeholder="手机号或邮箱"></a-input>
-                </a-form-item>
-                <a-form-item class="m-t20">
-                    <a-input type="password" visibilityToggle placeholder="输入验证码">
-                        <template #suffix>
-                            <EyeOutlined v-if="false" class="pass-icon" />
-                            <EyeInvisibleOutlined v-else class="pass-icon" />
-                        </template>
-                    </a-input>
-                </a-form-item>
-            </a-form>
-            <div class="form-other">
-                <div>忘记密码</div>
+            <Form :tabIndex="activeKey" />
+            <div>
+                <a-divider><span class="login-way">其他登录方式</span></a-divider>
+                <div class="login-way-img">
+                    <img src="@/assets/icon/wechat.png" />
+                    <img src="@/assets/icon/QQ.png" />
+                    <img src="@/assets/icon/weibo.png" />
+                </div>
             </div>
         </div>
     </div>
@@ -76,36 +47,14 @@ const activeKey = ref('1')
     .tab-pane {
         width: 400px;
     }
-    .form-country {
-        color: #8590a6;
-    }
-    .form-icon {
-        font-size: 10px;
-        color: #8590a6;
-        @include displayFlex(center, center, column);
-    }
-    .pass-icon {
-        font-size: 18px;
-        color: #8590a6;
-    }
-    .form-other {
+    .login-way {
         font-size: 12px;
-        line-height: 30px;
-        color: #1890ff;
+        color: #8590a6;
+    }
+    .login-way-img {
         cursor: pointer;
-        @include displayFlex(center, space-between);
+        @include displayFlex(center, space-around);
     }
 }
-:deep(.ant-tabs-nav::before) {
-    border-bottom: none; // 1px solid #f0f0f0
-}
-:deep(.ant-input) {
-    line-height: 30px;
-}
-:deep(.ant-input-affix-wrapper, .ant-input-affix-wrapper:focus),
-:deep(.ant-input, .ant-input:focus) {
-    border: none;
-    border-bottom: 1px solid #d9d9d9;
-    box-shadow: none;
-}
+
 </style>
