@@ -10,7 +10,7 @@ const http = axios.create({
 
 http.interceptors.request.use(config => {
     console.log('config', config)
-    config.headers['Content-Type'] = config.options.json ? 'application/json;chartset=utf-8' : 'application/x-www-form-urlencoded;chartset=utf-8;'
+    config.headers['Content-Type'] = config.json ? 'application/json;chartset=utf-8' : 'application/x-www-form-urlencoded;chartset=utf-8;'
 }, err => {
     console.log('err', err)
 })
@@ -20,6 +20,6 @@ export const request = (url, method, data, options = {}) => {
         method,
         url,
         data,
-        options
+        ...options
     })
 }
