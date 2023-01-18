@@ -1,7 +1,7 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
 
-// import axios from 'axios'
+import axios from 'axios'
 
 // const handleGet = () => {
 //   // http://localhost:3000

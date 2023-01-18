@@ -1,5 +1,9 @@
-import { request } from '@/utils/request'
+import http from '@/utils/request'
 
 export const login = (data) => {
-    return request('/user/login', 'get', data)
+    return http({
+        url: '/user/login',
+        method: 'get',
+        params: data
+    })
 }

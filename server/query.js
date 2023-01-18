@@ -29,7 +29,7 @@ class DB {
                 if (err) {
                     reject(err)
                 } else {
-                    resolve(res)
+                    resolve(res.pop())
                 }
             })
         })

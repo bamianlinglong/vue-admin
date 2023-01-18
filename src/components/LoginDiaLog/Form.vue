@@ -91,17 +91,19 @@ const rules = {
 }
 
 const submitFinish = async (event) => {
-    console.log('dasdadsada')
-    await login({ username: 'fsdfsd', password: 'dasdasd' }).then(res=> {
+    console.log(formState)
+    const data = { username: formState.username, password: formState.username }
+    await login(data).then(res => {
         console.log('请求的接口结果：', res)
     })
 }
-const handleLogin = async (event) => {
-    console.log('dasdadsada')
-    await login({ username: 'fsdfsd', password: 'dasdasd' }).then(res=> {
-        console.log('请求的接口结果：', res)
-    })
-}
+// const handleLogin = async (event) => {
+//     const data = { username: 'admin', password: '123456' }
+//     await login(data).then(res => {
+//         console.log('请求的接口结果：', res)
+//     })
+    
+// }
 </script>
 
 <style lang="scss" scoped>
