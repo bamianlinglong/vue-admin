@@ -7,7 +7,7 @@
                 <a-tab-pane key="1" tab="验证码登录"></a-tab-pane>
                 <a-tab-pane key="2" tab="密码登录"></a-tab-pane>
             </a-tabs>
-            <Form :tabIndex="activeKey" />
+            <Form :key="activeKey" :tabIndex="activeKey" />
             <div>
                 <a-divider><span class="login-way">其他登录方式</span></a-divider>
                 <div class="login-way-img">

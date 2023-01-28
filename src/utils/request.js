@@ -11,27 +11,29 @@ const http = axios.create({
 })
 
 http.interceptors.request.use(config => {
-    console.log('config', config)
     config.headers['Content-Type'] = config.json ? 'application/json;chartset=utf-8' : 'application/x-www-form-urlencoded;chartset=utf-8;'
     return config
 }, err => {
-    console.log('err', err)
     return err
-    // return err
 })
 
 http.interceptors.response.use(response => {
-    console.log('response',response)
-    if (response.data.code === 0) {
-        return response
+    const { code, error, msg } = response.data 
+    if (code === 0) {
+        return Promise.resolve(response.data)
     } else {
-        if (response.data.code === 401) {
-            console.log('未登录')
-        } else if (response.data.code === 400) {
-            message.error(response.data.msg);
+        if (code === 401) {
+            message.error('未登录，权限不足');
+        } else if (code === 500) {
+            const codemsg = error.errno === -4078 && '请检查数据库是否开启' || msg
+            message.error(codemsg);
+        } else {
+            message.error(msg);
         }
+        return Promise.reject(response.data)
     }
-    
+}, error => {
+    console.log(error)
 })
 
 

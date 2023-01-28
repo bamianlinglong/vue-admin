@@ -3,7 +3,7 @@
         <!-- 短信验证码登录 -->
         <div class="form-item-box" v-if="tabIndex == '1'">
             <a-form-item name="username">
-                <a-input placeholder="手机号" v-model:value="formState.username">
+                <a-input placeholder="手机号" v-model:value="formState.username" autocomplete="off">
                     <template #prefix>
                         <span class="p-r8 form-country">中国 +86</span>
                         <span class="p-r8 form-icon">
@@ -14,7 +14,7 @@
                 </a-input>
             </a-form-item>
             <a-form-item class="m-t20" name="code">
-                <a-input placeholder="输入验证码" v-model:value="formState.code">
+                <a-input placeholder="输入验证码" v-model:value="formState.code" autocomplete="off">
                     <template #suffix>
                         <span class="form-code">获取短信验证码</span>
                     </template>
@@ -24,10 +24,10 @@
         <!-- 密码登录 -->
         <div class="form-item-box" v-else>
             <a-form-item name="username">
-                <a-input placeholder="手机号或邮箱" v-model:value="formState.username"></a-input>
+                <a-input placeholder="手机号或邮箱" v-model:value="formState.username" autocomplete="off"></a-input>
             </a-form-item>
             <a-form-item class="m-t20" name="password">
-                <a-input type="password" visibilityToggle placeholder="输入验证码" v-model:value="formState.password">
+                <a-input type="password" visibilityToggle placeholder="输入验证码" autocomplete="off" v-model:value="formState.password">
                     <template #suffix>
                         <EyeOutlined v-if="false" class="pass-icon" />
                         <EyeInvisibleOutlined v-else class="pass-icon" />
@@ -47,7 +47,9 @@
 
 <script setup>
 import { ref, reactive } from 'vue'
+import { useRouter } from 'vue-router';
 import { login } from '@/api/user'
+import { home_view } from '@/common/path'
  
 const formState = reactive({
     username: '',
@@ -61,6 +63,8 @@ const props = defineProps({
         default: '1'
     }
 })
+
+const router = useRouter()
 
 // 用户名验证
 const validateUserName = async(rule, value) => {
@@ -92,9 +96,9 @@ const rules = {
 
 const submitFinish = async (event) => {
     console.log(formState)
-    const data = { username: formState.username, password: formState.username }
+    const data = { username: formState.username, password: formState.password }
     await login(data).then(res => {
-        console.log('请求的接口结果：', res)
+        router.replace(home_view)
     })
 }
 // const handleLogin = async (event) => {

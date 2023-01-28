@@ -20,7 +20,7 @@ router.get('/login', function(req, res) {
         }
     }).catch(err => {
         console.log(err)
-        res.send({ code: 500, msg: '请求失败', error: err })
+        res.send({ code: 500, msg: '请求失败', error: err }).end()
     })
 })
 
