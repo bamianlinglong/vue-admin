@@ -1,5 +1,6 @@
 const express = require('express')
 const bodyParser = require('body-parser')
+const path = require('path')
 // const mysql = require('mysql')
 
 const app = express()
@@ -21,6 +22,8 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 
 app.use('/user', userApi)
+
+app.use(express.static(path.join(__dirname, './dist')))   // 引入静态文件，运行node index 时可以访问
 
 
 

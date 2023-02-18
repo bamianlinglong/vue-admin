@@ -32,7 +32,9 @@ export default defineConfig({
         javascriptEnabled: true
       }
     }
-  }
+  },
+  // publicDir: process.env.NODE_ENV == 'production' ? './' : '/',
+  productionSourceMap: true     // 防止线上代码泄露
   // server: {
   //   proxy: {
   //     "/api": {
