@@ -1,7 +1,7 @@
 <template>
     <navbar />
-    首页
-    <RouterLink to="/login">登录页</RouterLink>
+    <!-- 首页
+    <RouterLink to="/login">登录页</RouterLink> -->
 </template>
 
 <script setup></script>

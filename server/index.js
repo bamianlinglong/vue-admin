@@ -6,6 +6,7 @@ const path = require('path')
 const app = express()
 
 const userApi = require('./api/user')
+const navbarApi = require('./api/navbar')
 
 
 // 跨域设置
@@ -22,6 +23,7 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 
 app.use('/user', userApi)
+app.use('/navbar', navbarApi)
 
 // app.use(express.static(path.join(__dirname, 'dist')))   // 引入静态文件，运行node index 时可以访问
 
