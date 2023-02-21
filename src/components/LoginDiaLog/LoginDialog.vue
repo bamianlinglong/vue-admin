@@ -1,7 +1,12 @@
 <template>
     <div class="login-mask"></div>
     <div class="login-form">
-        <div class="">5656565</div>
+        <div class="">
+            <div class="title">APP扫码登录</div>
+            <div>
+                <img class="code-img" src="@/assets/icon/login_code.png"/>
+            </div>
+        </div>
         <div>
             <a-tabs class="tab-pane" v-model:activeKey="activeKey">
                 <a-tab-pane key="1" tab="验证码登录"></a-tab-pane>
@@ -54,6 +59,17 @@ const activeKey = ref('1')
     .login-way-img {
         cursor: pointer;
         @include displayFlex(center, space-around);
+    }
+    .title {
+        font-size: 22px;
+        margin-top: 50px;
+    }
+    .code-img {
+        width: auto;
+        height: 200px;
+        margin-top: 20px;
+        border: 1px solid #eee;
+        border-radius: 10px;
     }
 }
 

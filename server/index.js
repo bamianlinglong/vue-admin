@@ -23,8 +23,10 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 app.use('/user', userApi)
 
-app.use(express.static(path.join(__dirname, './dist')))   // 引入静态文件，运行node index 时可以访问
+// app.use(express.static(path.join(__dirname, 'dist')))   // 引入静态文件，运行node index 时可以访问
 
 
 
-app.listen(3000, () => { console.log('监听连接....') })
+const server = app.listen(3000, () => { 
+    console.log(server.address())
+ })

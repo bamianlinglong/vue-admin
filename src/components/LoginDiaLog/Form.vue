@@ -95,19 +95,13 @@ const rules = {
 }
 
 const submitFinish = async (event) => {
-    console.log(formState)
     const data = { username: formState.username, password: formState.password }
     await login(data).then(res => {
+        localStorage.setItem('userInfo', JSON.stringify(res.data))
+        localStorage.setItem('token', 'Bear ' + res.data.token)
         router.replace(home_view)
     })
 }
-// const handleLogin = async (event) => {
-//     const data = { username: 'admin', password: '123456' }
-//     await login(data).then(res => {
-//         console.log('请求的接口结果：', res)
-//     })
-    
-// }
 </script>
 
 <style lang="scss" scoped>
